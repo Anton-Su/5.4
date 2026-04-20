@@ -1,0 +1,69 @@
+[
+  {
+    "id": 1,
+    "title": "Buy milk",
+    "description": "2 liters, skimmed",
+    "isCompleted": false
+  },
+  {
+    "id": 2,
+    "title": "Call mom",
+    "description": "Ask about the weekend",
+    "isCompleted": true
+  },
+  {
+    "id": 3,
+    "title": "Do Android homework",
+    "description": "Clean Architecture + Compose",
+    "isCompleted": false
+  },
+  {
+    "id": 4,
+    "title": "Walk the dog",
+    "description": "30 minutes in the park",
+    "isCompleted": false
+  },
+  {
+    "id": 5,
+    "title": "Read a book",
+    "description": "Finish 'Clean Code'",
+    "isCompleted": true
+  },
+  {
+    "id": 6,
+    "title": "Pay bills",
+    "description": "Electricity and internet",
+    "isCompleted": false
+  },
+  {
+    "id": 7,
+    "title": "Grocery shopping",
+    "description": "Fruits, vegetables, bread",
+    "isCompleted": false
+  },
+  {
+    "id": 8,
+    "title": "Exercise",
+    "description": "30 minutes of cardio",
+    "isCompleted": true
+  },
+  {
+    "id": 9,
+    "title": "Meditate",
+    "description": "15 minutes in the morning",
+    "isCompleted": false
+  },
+  {
+    "id": 10,
+    "title": "Plan vacation",
+    "description": "Research destinations and flights",
+    "isCompleted": false
+  },
+  {
+    "id": 11,
+    "title": "Clean the house",
+    "description": "Living room and kitchen",
+    "isCompleted": true
+  }
+]
+
