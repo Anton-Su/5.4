@@ -16,6 +16,10 @@ class TodoViewModel(private val getAllTodosUseCase: GetAllTodosUseCase,
     private val _todos = MutableStateFlow<List<TodoItem>>(emptyList())
     val todos = _todos.asStateFlow()
 
+    // new state to control coloring of completed items
+    private val _highlightCompletedColor = MutableStateFlow(false)
+    val highlightCompletedColor = _highlightCompletedColor.asStateFlow()
+
     init {
         loadTodos()
     }
@@ -38,5 +42,8 @@ class TodoViewModel(private val getAllTodosUseCase: GetAllTodosUseCase,
 
         }
     }
-}
 
+    fun setHighlightCompletedColor(value: Boolean) {
+        _highlightCompletedColor.value = value
+    }
+}

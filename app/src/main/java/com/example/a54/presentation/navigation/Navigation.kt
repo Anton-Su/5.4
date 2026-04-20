@@ -10,6 +10,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.a54.presentation.ui.screen.DetailScreen
 import com.example.a54.presentation.ui.screen.ListScreen
+import com.example.a54.presentation.ui.screen.AddScreen
 import com.example.a54.presentation.viewmodel.TodoViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 
@@ -18,6 +19,7 @@ sealed class Screen(val route: String) {
     data object TodoDetailScreen : Screen("todo_detail/{itemId}") {
         fun createRoute(itemId: Int) = "todo_detail/$itemId"
     }
+    data object TodoAddScreen : Screen("todo_add")
 }
 
 @Composable
@@ -33,9 +35,11 @@ fun Navigation(navController: NavHostController = rememberNavController(), viewM
             val itemId = backStackEntry.arguments?.getInt("itemId")
             val item = viewModel.todos.collectAsState().value.find { it.id == itemId }
             if (item != null) {
-                DetailScreen(navHostController = navController, item = item)
+                DetailScreen(navHostController = navController, viewModel = viewModel, item = item)
             }
+        }
+        composable(Screen.TodoAddScreen.route) {
+            AddScreen(navHostController = navController, viewModel = viewModel)
         }
     }
 }
-

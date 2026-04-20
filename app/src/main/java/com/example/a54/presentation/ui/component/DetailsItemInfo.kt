@@ -10,6 +10,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.style.TextDecoration
 
 @Composable
 fun DetailsItemInfo(
@@ -22,7 +23,8 @@ fun DetailsItemInfo(
         verticalArrangement = Arrangement.spacedBy(12.dp)) {
         Text(
             text = title,
-            style = MaterialTheme.typography.headlineLarge
+            style = MaterialTheme.typography.headlineLarge,
+            textDecoration = if (isCompleted) TextDecoration.LineThrough else TextDecoration.None
         )
         Text(
             text = description,
@@ -35,4 +37,3 @@ fun DetailsItemInfo(
         )
     }
 }
-
