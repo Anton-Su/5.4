@@ -7,9 +7,12 @@ import com.example.a54.domain.usecase.GetAllTodosUseCase
 import com.example.a54.domain.usecase.GetTodoUseCase
 import com.example.a54.domain.usecase.InsertTodoUseCase
 import com.example.a54.domain.usecase.DeleteTodoUseCase
+import com.example.a54.data.local.SettingsDataStore
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 
@@ -17,17 +20,13 @@ class TodoViewModel(
     private val getAllTodosUseCase: GetAllTodosUseCase,
     private val toggleToDoUseCase: GetTodoUseCase,
     private val insertTodoUseCase: InsertTodoUseCase,
-    private val deleteTodoUseCase: DeleteTodoUseCase
+    private val deleteTodoUseCase: DeleteTodoUseCase,
+    private val settingsDataStore: SettingsDataStore
 ): ViewModel() {
     private val _todos = MutableStateFlow<List<TodoItem>>(emptyList())
     val todos = _todos.asStateFlow()
-
-    // new state to control coloring of completed items
-
-
-    // data store!!! or shared preferences can be used to persist this setting across app restarts
-    private val _highlightCompletedColor = MutableStateFlow(false)
-    val highlightCompletedColor = _highlightCompletedColor.asStateFlow()
+    val highlightCompletedColor = settingsDataStore.highlightCompletedFlow
+        .stateIn(viewModelScope, SharingStarted.Eagerly, false)
 
     init {
         loadTodos()
@@ -55,7 +54,6 @@ class TodoViewModel(
     fun insertTodo(todo: TodoItem) {
         viewModelScope.launch {
             insertTodoUseCase(todo)
-            // reload list quickly
             _todos.value = getAllTodosUseCase()
         }
     }
@@ -68,6 +66,6 @@ class TodoViewModel(
     }
 
     fun setHighlightCompletedColor(value: Boolean) {
-        _highlightCompletedColor.value = value
+        viewModelScope.launch { settingsDataStore.setHighlightCompleted(value) }
     }
 }

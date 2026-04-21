@@ -15,7 +15,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -35,14 +34,12 @@ fun AddScreen(navHostController: NavHostController, viewModel: TodoViewModel) {
                 Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Назад")
             }
         })
-
         OutlinedTextField(
             value = titleState.value,
             onValueChange = { titleState.value = it },
             label = { Text("Название задачи") },
             modifier = Modifier.fillMaxWidth().padding(top = 16.dp)
         )
-
         OutlinedTextField(
             value = descState.value,
             onValueChange = { descState.value = it },
@@ -51,7 +48,6 @@ fun AddScreen(navHostController: NavHostController, viewModel: TodoViewModel) {
             maxLines = 15,
             singleLine = false
         )
-
         Button(onClick = {
             val newId = (todos.value.maxOfOrNull { it.id } ?: 0) + 1
             val todo = TodoItem(
