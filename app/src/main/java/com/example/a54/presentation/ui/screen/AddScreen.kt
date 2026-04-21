@@ -24,21 +24,18 @@ import com.example.a54.presentation.viewmodel.TodoViewModel
 fun AddScreen(navHostController: NavHostController, viewModel: TodoViewModel) {
     val titleState = remember { mutableStateOf("") }
     val descState = remember { mutableStateOf("") }
-
     Column(modifier = Modifier.padding(start = 16.dp, end = 16.dp)) {
         AppTopBar(title = "Новая задача", viewModel = viewModel, navIcon = {
             IconButton(onClick = { navHostController.navigateUp() }) {
                 Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Назад")
             }
         })
-
         OutlinedTextField(
             value = titleState.value,
             onValueChange = { titleState.value = it },
             label = { Text("Название задачи") },
             modifier = Modifier.fillMaxWidth().padding(top = 16.dp)
         )
-
         OutlinedTextField(
             value = descState.value,
             onValueChange = { descState.value = it },
@@ -47,7 +44,6 @@ fun AddScreen(navHostController: NavHostController, viewModel: TodoViewModel) {
             maxLines = 15,
             singleLine = false
         )
-
         Button(onClick = { navHostController.navigateUp() }, modifier = Modifier.padding(top = 24.dp)) {
             Text(text = "Сохранить")
         }
