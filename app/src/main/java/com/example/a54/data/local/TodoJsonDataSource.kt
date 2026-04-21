@@ -12,8 +12,5 @@ class TodoJsonDataSource(private val context: Context) {
         val type = object : TypeToken<List<TodoItemDto>>() {}.type
         return gson.fromJson(json, type)
     }
-
-
-
 }
 

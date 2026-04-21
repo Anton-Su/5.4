@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/example/a54/data/local/TodoEntity.kt">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/app/src/main/java/com/example/a54/data/local/TodoEntity.kt" />
+              <option name="updatedContent" value="package com.example.a54.data.local&#10;&#10;import androidx.room.Entity&#10;import androidx.room.PrimaryKey&#10;import com.example.a54.domain.model.TodoItem&#10;&#10;@Entity(tableName = &quot;todos&quot;)&#10;data class TodoEntity(&#10;    @PrimaryKey val id: Int,&#10;    val title: String,&#10;    val description: String,&#10;    val isCompleted: Boolean&#10;) {&#10;    fun toDomain(): TodoItem = TodoItem(id = id, title = title, description = description, isCompleted = isCompleted)&#10;&#10;    companion object {&#10;        fun fromDomain(item: TodoItem): TodoEntity = TodoEntity(&#10;            id = item.id,&#10;            title = item.title,&#10;            description = item.description,&#10;            isCompleted = item.isCompleted&#10;        )&#10;    }&#10;}&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

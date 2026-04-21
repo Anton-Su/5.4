@@ -20,7 +20,11 @@ class RoomTodoRepositoryImpl(private val dao: TodoDao): TodoRepository {
         }
     }
 
-    suspend fun insert(todo: TodoItem) {
+    override suspend fun insertTodo(todo: TodoItem) {
         dao.insert(TodoEntity.fromDomain(todo))
+    }
+
+    override suspend fun deleteTodo(todo: TodoItem) {
+        dao.delete(TodoEntity.fromDomain(todo))
     }
 }

@@ -6,6 +6,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -31,7 +33,13 @@ fun DetailScreen(
         DetailsItemInfo(
             title = item.title,
             description = item.description,
-            isCompleted = item.isCompleted
-        )
+            isCompleted = item.isCompleted)
+            Button(onClick = {
+                viewModel.deleteTodo(item)
+                navHostController.popBackStack()
+            },
+                modifier = Modifier.padding(top = 24.dp)) {
+                Text(text = "Удалить задачу")
+            }
     }
 }

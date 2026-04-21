@@ -5,8 +5,7 @@ import com.example.a54.domain.model.TodoItem
 interface TodoRepository {
     suspend fun getTodos(): List<TodoItem>
     suspend fun toggleTodo(id: Int)
-
-
-
+    suspend fun insertTodo(todo: TodoItem)
+    suspend fun deleteTodo(todo: TodoItem)
 }
 

@@ -5,14 +5,20 @@ import androidx.lifecycle.viewModelScope
 import com.example.a54.domain.model.TodoItem
 import com.example.a54.domain.usecase.GetAllTodosUseCase
 import com.example.a54.domain.usecase.GetTodoUseCase
+import com.example.a54.domain.usecase.InsertTodoUseCase
+import com.example.a54.domain.usecase.DeleteTodoUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 
-class TodoViewModel(private val getAllTodosUseCase: GetAllTodosUseCase,
-                    private val toggleToDoUseCase: GetTodoUseCase): ViewModel() {
+class TodoViewModel(
+    private val getAllTodosUseCase: GetAllTodosUseCase,
+    private val toggleToDoUseCase: GetTodoUseCase,
+    private val insertTodoUseCase: InsertTodoUseCase,
+    private val deleteTodoUseCase: DeleteTodoUseCase
+): ViewModel() {
     private val _todos = MutableStateFlow<List<TodoItem>>(emptyList())
     val todos = _todos.asStateFlow()
 
@@ -43,6 +49,21 @@ class TodoViewModel(private val getAllTodosUseCase: GetAllTodosUseCase,
                 }
             }
 
+        }
+    }
+
+    fun insertTodo(todo: TodoItem) {
+        viewModelScope.launch {
+            insertTodoUseCase(todo)
+            // reload list quickly
+            _todos.value = getAllTodosUseCase()
+        }
+    }
+
+    fun deleteTodo(todo: TodoItem) {
+        viewModelScope.launch {
+            deleteTodoUseCase(todo)
+            _todos.value = getAllTodosUseCase()
         }
     }
 

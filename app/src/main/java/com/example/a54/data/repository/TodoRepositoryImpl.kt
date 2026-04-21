@@ -17,5 +17,22 @@ class TodoRepositoryImpl(dataSource: TodoJsonDataSource) : TodoRepository {
         val updated = old.copy(isCompleted = !old.isCompleted)
         todosDto[index] = updated
     }
-}
 
+    override suspend fun insertTodo(todo: TodoItem) {
+        val newId = (todosDto.maxOfOrNull { it.id } ?: 0) + 1
+        val newTodoDto = com.example.a54.data.model.TodoItemDto(
+            id = newId,
+            title = todo.title,
+            description = todo.description,
+            isCompleted = todo.isCompleted
+        )
+        todosDto.add(newTodoDto)
+    }
+
+    override suspend fun deleteTodo(todo: TodoItem) {
+        val index = todosDto.indexOfFirst { it.id == todo.id }
+        if (index != -1) {
+            todosDto.removeAt(index)
+        }
+    }
+}
