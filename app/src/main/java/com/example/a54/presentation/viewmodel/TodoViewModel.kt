@@ -17,6 +17,9 @@ class TodoViewModel(private val getAllTodosUseCase: GetAllTodosUseCase,
     val todos = _todos.asStateFlow()
 
     // new state to control coloring of completed items
+
+
+    // data store!!! or shared preferences can be used to persist this setting across app restarts
     private val _highlightCompletedColor = MutableStateFlow(false)
     val highlightCompletedColor = _highlightCompletedColor.asStateFlow()
 
