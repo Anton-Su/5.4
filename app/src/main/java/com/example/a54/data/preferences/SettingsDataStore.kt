@@ -1,4 +1,4 @@
-package com.example.a54.data.local
+package com.example.a54.data.preferences
 
 import android.content.Context
 import androidx.datastore.preferences.core.MutablePreferences

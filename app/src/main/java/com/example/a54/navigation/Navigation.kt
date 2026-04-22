@@ -1,4 +1,4 @@
-package com.example.a54.presentation.navigation
+package com.example.a54.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState

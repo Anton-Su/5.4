@@ -16,7 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.a54.presentation.navigation.Screen
+import com.example.a54.navigation.Screen
 import com.example.a54.presentation.ui.component.FullCard
 import com.example.a54.presentation.ui.component.AppTopBar
 import com.example.a54.presentation.viewmodel.TodoViewModel

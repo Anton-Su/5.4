@@ -7,7 +7,7 @@ import com.example.a54.domain.usecase.GetAllTodosUseCase
 import com.example.a54.domain.usecase.GetTodoUseCase
 import com.example.a54.domain.usecase.InsertTodoUseCase
 import com.example.a54.domain.usecase.DeleteTodoUseCase
-import com.example.a54.data.local.SettingsDataStore
+import com.example.a54.data.preferences.SettingsDataStore
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
